@@ -1,4 +1,4 @@
-OpenSCAD (https://openscad.org/) is a code-based CAD modeling program that I use for making 3D print models.  This repository documents the various objects I've designed.
+This repository documents the various objects I've designed in OpenSCAD.  OpenSCAD (https://openscad.org/) is a code-based CAD modeling program that I use for making 3D print models.  
 
 
 There is no interaction with the model by mouse other than controlling the view.  Instead, you type lines of code such as:

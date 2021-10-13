@@ -4,4 +4,4 @@ Print-in-place enclosure for a Raspberry Pi 4.  There are existing cases but I f
 
 With the parameterization I'm hoping to be able to accommodate fans and various options for the ribbon cables and GPIO stuff.
 
-!(pi-case-open.jpg) !(pi-case-closed.jpg)
+![](pi-case-open.jpg) ![](pi-case-closed.jpg)

@@ -1,3 +1,5 @@
+#include <speedloader_1b.scad>
+
 difference(){
     //top bump
     intersection(){

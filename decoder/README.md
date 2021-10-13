@@ -1,4 +1,4 @@
-![decoder](./decoder.png)
+![decoder](./decoder.jpg)
 
 Plain old subsitution cipher disk for teaching my son about encryption.  
 

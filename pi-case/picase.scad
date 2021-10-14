@@ -4,6 +4,7 @@ model_top();
 
 module model_bottom(){
     bottom();
+    color("green", 0.3)
     translate([0,49,20])
         rotate([180,0,0]) 
             top();
@@ -13,8 +14,9 @@ module model_bottom(){
 module model_top(){
     top();
 
-        translate([-17.5,49,0]) 
-            rotate([0,0,180]) bottom();
+    color("green", 0.3)
+    translate([-17.5,49,0]) 
+        rotate([0,0,180]) bottom();
 
     translate([-9, 6, 10])
         rotate([-90, 0, 0])
@@ -27,8 +29,8 @@ module top(){
         //outer shell
         translate([0,0,-2])
             minkowski() {
-                cube([80,49,9]);
-                cylinder(r=6 , h=14);
+                cube([80,49,8]);
+                cylinder(r=6.5 , h=14);
             }
         
         translate([0,0,0])
@@ -39,17 +41,18 @@ module top(){
 
 
         //ports
-        translate([8.7, 55, 21])
-            usb_c();
-        translate([23.5, 55, 21])
-            mini_hdmi();
-        translate([37, 55, 21])
-            mini_hdmi();
-        translate([51.5, 55, 10])
-            audio_jack();
-
-        translate([3.7, 53, 14])
-            cube([51.3, 2, 8]);
+        translate([0,0,0]){
+            translate([8.7, 55, 21])
+                usb_c();
+            translate([23.5, 55, 21])
+                mini_hdmi();
+            translate([37, 55, 21])
+                mini_hdmi();
+            translate([51.5, 55, 10])
+                audio_jack();
+            translate([3.7, 53, 14])
+                cube([51.3, 4, 8]);
+        }
 
 
         //chamfer
@@ -59,8 +62,8 @@ module top(){
                     polygon([[0,0], [5, 5], [0, 5]]);
 
         //rear opening
-        translate([-10,-1,0])
-            cube([30,51,30]);
+        translate([-10,-4,0])
+            cube([10,57,30]);
 
         //top vent
         translate([10, 10, -3]){
@@ -77,7 +80,7 @@ module top(){
         }
 
         //ports cutout
-        translate([79,0,0]) cube([30, 50, 60]);
+        #translate([79,0,0]) cube([30, 50, 30]);
     }
 
     //knuckle
@@ -104,26 +107,26 @@ module top(){
 }
 
 module bottom(){
-    //bottom plate
     difference(){
         union(){
+            //bottom plate
             translate([0,0,-2])
                 minkowski() {
                     cube([80,49,1]);
-                    cylinder(r=6, h=1);
+                    cylinder(r=6.5, h=1);
                 }
 
                 //racetrack
                 difference(){
                     minkowski() {
-                        cube([80,49,.5]);
-                        cylinder(r=5, h=.5);
+                        cube([80,49,1]);
+                        cylinder(r=5, h=1);
                     }
 
                     
                     translate([0,0,-.1])
                         minkowski() {
-                            cube([80,49,.5]);
+                            cube([80,49,3]);
                             cylinder(r=4, h=1);
                         }
 
@@ -142,7 +145,7 @@ module bottom(){
                         [59,49,0]   ])
                 translate(i) 
                     difference()
-                        cylinder(d1=8, d2=6, h=5);
+                        cylinder(d1=8, d2=6, h=2);
                     
         }
 
@@ -171,7 +174,6 @@ module bottom(){
         rotate([-90, 0, 0])
             cylinder(d=5, h=35);
 }
-
 module knuckle(){
     intersection() {
         
@@ -179,10 +181,10 @@ module knuckle(){
             linear_extrude(24){
                 difference(){
                     union(){
-                        circle(r=10);
-                        translate([-10,0]) square([10,10]);
+                        translate([0, -4]) circle(r=10);
+                        translate([-10,-4]) square([10,14]);
                     }
-                    translate([0, -11]) square([30, 30]);
+                    translate([0, -15]) square([30, 30]);
                     translate([-11,5]) square([30, 30]);
                 }
             }
@@ -194,7 +196,7 @@ module knuckle(){
         }
 
         union(){
-            translate([-3, 0, 4]){
+            translate([0, 0, 4]){
                 translate([0,20,10])
                     rotate([90, 0, 0])
                         cylinder(r=10, h=50);

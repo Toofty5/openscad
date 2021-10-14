@@ -4,7 +4,7 @@ model_top();
 
 module model_bottom(){
     bottom();
-    //color("green", 0.3)
+    color("green")
     translate([0,49,20])
         rotate([180,0,0]) 
             top();
@@ -14,7 +14,7 @@ module model_bottom(){
 module model_top(){
     top();
 
-//    color("green", 0.3)
+    color("green")
     translate([-17.5,49,0]) 
         rotate([0,0,180]) bottom();
 
@@ -41,7 +41,7 @@ module top(){
 
 
         //ports
-        translate([0,0,0]){
+        translate([0,0,3]){
             translate([8.7, 55, 21])
                 usb_c();
             translate([23.5, 55, 21])
@@ -55,11 +55,12 @@ module top(){
         }
 
 
-        //chamfer
+        /*chamfer
         translate([-7, 50, -2.5])
             rotate([90, 0, 0])
                 linear_extrude(51) 
                     polygon([[0,0], [5, 5], [0, 5]]);
+        */
         //rear opening
         translate([-10,-4,0])
             cube([10,57,30]);
@@ -132,8 +133,8 @@ module bottom(){
                     
                 }
                 //port cutout cover
-                translate([3.7, -6, 0])
-                    cube([51.3, 2, 5]);
+                translate([3.7, -6.5, 0])
+                    cube([51.3, 2.5, 2]);
 
             //standoffs
             for (i= [   [1,0,0],
@@ -196,9 +197,9 @@ module knuckle(){
                     linear_extrude(30) 
                         polygon([[0,0],[5,5],[0, 5]]);
         }
-
+        //top part
         union(){
-            translate([0, 0, 4]){
+            translate([0, 0, 2]){
                 translate([0,20,10])
                     rotate([90, 0, 0])
                         cylinder(r=10, h=50);

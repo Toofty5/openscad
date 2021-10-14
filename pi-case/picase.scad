@@ -79,24 +79,25 @@ module top(){
             }
         }
 
-        //ports cutout
-        #translate([79,0,0]) cube([30, 50, 30]);
+        //front ports cutout
+        translate([79,-1,0]) cube([30, 52, 30]);
     }
 
     //knuckle
     difference(){
         translate([-14, 15.5, -2]) {
             intersection(){
-                {
-                    cube([10, 18, 20]);
-                    translate([5,0,10])
-                        rotate([-90,0,0]) 
-                            cylinder(r=8, h=30);
-                }
+                cube([10, 18, 20]);
+                translate([5,0,12])
+                    rotate([-90,0,0]) 
+                        cylinder(r=6, h=30);
             }
             difference(){
-                cube([10, 18, 7]);
-                rotate([0,45,0]) cube([4, 50, 4], center=true);
+                cube([10, 18, 9]);
+                translate([0,25,-8])
+                    rotate([90,0,0])
+                        linear_extrude(30)
+                            polygon([[0,0],[0,15],[5,10],[5,0]]);
             }
         }
         //pivot

@@ -4,7 +4,7 @@ model_top();
 
 module model_bottom(){
     bottom();
-    color("green", 0.3)
+    //color("green", 0.3)
     translate([0,49,20])
         rotate([180,0,0]) 
             top();
@@ -14,7 +14,7 @@ module model_bottom(){
 module model_top(){
     top();
 
-    color("green", 0.3)
+//    color("green", 0.3)
     translate([-17.5,49,0]) 
         rotate([0,0,180]) bottom();
 
@@ -60,7 +60,6 @@ module top(){
             rotate([90, 0, 0])
                 linear_extrude(51) 
                     polygon([[0,0], [5, 5], [0, 5]]);
-
         //rear opening
         translate([-10,-4,0])
             cube([10,57,30]);
@@ -85,21 +84,18 @@ module top(){
 
     //knuckle
     difference(){
-        translate([-14, 15.5, -2]) {
-            intersection(){
-                cube([10, 18, 20]);
-                translate([5,0,12])
+        union(){
+                translate([-9,15.5,10])
                     rotate([-90,0,0]) 
-                        cylinder(r=6, h=30);
+                        cylinder(r=5, h=18);
+                translate([-9,0,10])
+                    rotate([0,-30,0])
+                        translate([-5,15.5, -20]) 
+                            cube([10, 18,20]);
             }
-            difference(){
-                cube([10, 18, 9]);
-                translate([0,25,-8])
-                    rotate([90,0,0])
-                        linear_extrude(30)
-                            polygon([[0,0],[0,15],[5,10],[5,0]]);
-            }
-        }
+        translate([-15,10,-32])
+            cube([30, 30, 30]);
+        
         //pivot
         translate([-9, 6, 10])
             rotate([-90, 0, 0])
@@ -152,19 +148,24 @@ module bottom(){
 
        
         //standoff holes
-        for (i= [   [1,0,-1.8],
-                    [1,49,-1.8],
-                    [59,0,-1.8],
-                    [59,49,-1.8]   ])
+        for (i= [   [1,0,-3],
+                    [1,49,-3],
+                    [59,0,-3],
+                    [59,49,-3]   ])
             translate(i) 
                 difference()
                     cylinder(d=2.5, h=10);
 
         //chamfer
+        /*
         translate([-6.25, 70, -2.5])
             rotate([90, 0, 0])
                 linear_extrude(100) 
                     polygon([[0,0], [3, 3], [0, 3]]);
+
+            */
+        translate([-6,24.5,-8])
+            cylinder(d=16, h=10);
     }
 
     //hinge knuckles

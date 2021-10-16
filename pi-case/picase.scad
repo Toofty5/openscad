@@ -1,8 +1,8 @@
 $fn=30;
-model_top();
-//model_bottom();
+open();
+//closed();
 
-module model_bottom(){
+module closed(){
     bottom();
     color("green")
     translate([0,49,20])
@@ -11,7 +11,7 @@ module model_bottom(){
 }
 
 
-module model_top(){
+module open(){
     top();
 
     color("green")
@@ -41,7 +41,7 @@ module top(){
 
 
         //ports
-        translate([0,0,3]){
+        translate([-0.5,0,3]){
             translate([8.7, 55, 21])
                 usb_c();
             translate([23.5, 55, 21])
@@ -82,6 +82,20 @@ module top(){
         //front ports cutout
         translate([79,-1,0]) cube([30, 52, 30]);
     }
+    //front slats
+    difference(){
+        union(){
+            translate([66.5,-1,0]) cube([20, 19, 2]);
+            translate([62.5,15,0]) 
+                cube([24, 3, 12]);
+            translate([62.5,32.5,0]) 
+                cube([24, 3, 12]);
+        }
+        translate([62.5,-10,14])
+            rotate([-90,0,0])
+                cylinder(r=14, h=70);
+    }
+
 
     //knuckle
     difference(){
@@ -133,7 +147,7 @@ module bottom(){
                     
                 }
                 //port cutout cover
-                translate([3.7, -6.5, 0])
+                translate([3.2, -6.5, 0])
                     cube([51.3, 2.5, 2]);
 
             //standoffs
@@ -144,9 +158,7 @@ module bottom(){
                 translate(i) 
                     difference()
                         cylinder(d1=8, d2=6, h=2);
-                    
         }
-
        
         //standoff holes
         for (i= [   [1,0,-3],
@@ -168,6 +180,10 @@ module bottom(){
         translate([-6,24.5,-8])
             cylinder(d=16, h=10);
     }
+    //front ports
+    translate([82.5,-2,0]) cube([2.5, 52, 3]);
+    translate([82.5,31,0]) cube([4, 3, 8]);
+    translate([82.5,13.5,0]) cube([4, 3, 8]);
 
     //hinge knuckles
     translate([-3.5, 10, -2]) knuckle();

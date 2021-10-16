@@ -1,6 +1,6 @@
 $fn=30;
-open();
-//closed();
+//open();
+closed();
 
 module closed(){
     bottom();
@@ -40,7 +40,7 @@ module top(){
             }
 
 
-        //ports
+        //side ports
         translate([-0.5,0,3]){
             translate([8.7, 55, 21])
                 usb_c();
@@ -50,17 +50,21 @@ module top(){
                 mini_hdmi();
             translate([51.5, 55, 10])
                 audio_jack();
-            translate([3.7, 53, 14])
-                cube([51.3, 4, 8]);
+            //#translate([3.7, 53, 14]){
+               // cube([51.3, 4, 8]);
+            translate([3.7, 57, 13])
+                rotate([90,0,0])
+                    linear_extrude(6)
+                        polygon([[0,0], [51.3, 0],[57.3, 8],[-6,8]]);
+            
         }
 
-
-        /*chamfer
-        translate([-7, 50, -2.5])
+        //chamfer
+        translate([-7, 53, -2.5])
             rotate([90, 0, 0])
-                linear_extrude(51) 
+                linear_extrude(57) 
                     polygon([[0,0], [5, 5], [0, 5]]);
-        */
+        
         //rear opening
         translate([-10,-4,0])
             cube([10,57,30]);
@@ -146,9 +150,11 @@ module bottom(){
                         cube([10,19,5]);
                     
                 }
-                //port cutout cover
-                translate([3.2, -6.5, 0])
-                    cube([51.3, 2.5, 2]);
+                //side port cutout cover
+                translate([3.2, -6.5, 3.7])
+                    rotate([-90,0,0])
+                        linear_extrude(2.5)
+                            polygon([[0,0], [51.3, 0],[54.3, 4],[-3,4]]);
 
             //standoffs
             for (i= [   [1,0,0],

@@ -1,6 +1,6 @@
 $fn=30;
-//open();
-closed();
+open();
+//closed();
 
 module closed(){
     bottom();
@@ -98,6 +98,9 @@ module top(){
         translate([62.5,-10,14])
             rotate([-90,0,0])
                 cylinder(r=14, h=70);
+        //notches
+        translate([82.5,0,10])
+            cube([4.1, 50, 4]);
     }
 
 
@@ -188,8 +191,8 @@ module bottom(){
     }
     //front ports
     translate([82.5,-2,0]) cube([2.5, 52, 3]);
-    translate([82.5,31,0]) cube([4, 3, 8]);
-    translate([82.5,13.5,0]) cube([4, 3, 8]);
+    translate([82.5,31,0]) cube([4, 3, 10]);
+    translate([82.5,13.5,0]) cube([4, 3, 10]);
 
     //hinge knuckles
     translate([-3.5, 10, -2]) knuckle();
@@ -201,7 +204,6 @@ module bottom(){
 }
 module knuckle(){
     intersection() {
-        
         difference(){
             linear_extrude(24){
                 difference(){
@@ -213,14 +215,13 @@ module knuckle(){
                     translate([-11,5]) square([30, 30]);
                 }
             }
-
             translate([-11, -15, 4])
                 rotate([-90, 0, 0])
                     linear_extrude(30) 
                         polygon([[0,0],[5,5],[0, 5]]);
         }
         //top part
-        union(){
+        union()
             translate([0, 0, 2]){
                 translate([0,20,10])
                     rotate([90, 0, 0])
@@ -228,8 +229,7 @@ module knuckle(){
                 translate([-10, -30, -10]) 
                     cube([20,50, 20]);
             }
-        }
-    }
+    } //end intersection
 }
 
 
